@@ -6,6 +6,7 @@
 // 3 = both 
 // d = show debug
 // c = "clear painting"
+// k = show points
 
 // GESTURE/ EXPRESSION DETECTOR INFO (defined here but a useful tool for you to use elsewhere.):
 // detectHandGesture(hand) returns "Pinch", "Peace", "Thumbs Up", "Pointing", "Open Palm", or "Fist"
@@ -22,16 +23,16 @@
 
 
 // If using video file use these dimentions: 
-const  CaptureWidth = 1280;
-const  CaptureHeight = 720;
+const  CaptureWidth = 1280; 
+const  CaptureHeight = 720; 
 
 // const  CaptureWidth = 640;
 // const  CaptureHeight = 360;
 
 
 // If using Webcam use these dimentions
-// const  CaptureWidth = 1280;
-// const  CaptureHeight = 960;
+//const  CaptureWidth = 1280;
+//const  CaptureHeight = 960;
 
 // const  CaptureWidth = 1024;
 // const  CaptureHeight = 768;

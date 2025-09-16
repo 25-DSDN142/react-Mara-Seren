@@ -25,14 +25,16 @@ function drawInteraction(faces, hands) {
     Start drawing on the hands here
     */
 
-    fill(225, 225, 0);
-    ellipse(indexFingerTipX, indexFingerTipY, 30, 30);
+    // fill(117,116,41);//Green
+    // ellipse(indexFingerTipX, indexFingerTipY, 30, 30);
 
     // drawPoints(hand)
 
-    //fingerPuppet(indexFingerTipX, indexFingerTipY);
+    // fingerPuppet(indexFingerTipX, indexFingerTipY);
 
-    //chameleonHandPuppet(hand)
+    captainAmericaSHield(hand)
+
+  //  stary(x, y, radius1, radius2, npoints)
 
     /*
     Stop drawing on the hands here
@@ -78,7 +80,7 @@ function pinchCircle(hand) { // adapted from https://editor.p5js.org/ml5/sketche
 
 }
 
-function chameleonHandPuppet(hand) {
+function captainAmericaSHield(hand) {
   // Find the index finger tip and thumb tip
   // let finger = hand.index_finger_tip;
 
@@ -92,18 +94,57 @@ function chameleonHandPuppet(hand) {
   let pinch = dist(finger.x, finger.y, thumb.x, thumb.y);
 
   // This circle's size is controlled by a "pinch" gesture
-  fill(0, 255, 0, 200);
+  fill(135,0,0);
   stroke(0);
-  strokeWeight(2);
-  circle(centerX, centerY, pinch);
+  strokeWeight(0);
+  circle(centerX, centerY, 260);
+
+   fill(165,165,171);
+  stroke(0);
+  strokeWeight(0);
+  circle(centerX, centerY, 200);
+
+   fill(135,0,0);
+  stroke(0);
+  strokeWeight(0);
+  circle(centerX, centerY, 140);
+
+   fill(0,45,92);
+  stroke(0);
+  strokeWeight(0);
+  circle(centerX, centerY, 80);
+
+//star shape
+push();
+translate (centerX, centerY);
+//rotate (frameCount * 0.05);
+fill(165,165,171);
+Capstary(0, 0, 40, 16, 5);
+pop();
+
+
 
   let indexFingerTipX = hand.index_finger_tip.x;
   let indexFingerTipY = hand.index_finger_tip.y;
-  fill(0)
-  circle(indexFingerTipX, indexFingerTipY, 20);
+  //fill(0)
+  //circle(indexFingerTipX, indexFingerTipY, 20);
 
 }
-
+//helper function to draw star
+function Capstary (x, y, radius1, radius2, npoints){
+  let angle = TWO_PI / npoints;
+  let halfAngle = angle / 2.0;
+  beginShape ();
+  for (let a = 0; a < TWO_PI; a += angle){
+    let sx = x + cos(a) * radius2;
+    let sy = y + sin(a) * radius2;
+    vertex(sx, sy);
+    sx = x + cos(a + halfAngle) * radius1;
+    sy = y + sin(a + halfAngle) * radius1;
+    vertex(sx, sy);
+  }
+  endShape (CLOSE);
+}
 function drawConnections(hand) {
   // Draw the skeletal connections
   push()
