@@ -1,10 +1,19 @@
 // ----=  Faces  =----
+let hulkX, hulkY;
+let hulkWidth, hulkHeight;
 /* load images here */
 function prepareInteraction() {
   //bgImage = loadImage('/images/background.png');
+  hulkImage = loadImage('/images/hulkface.png');
+  
 }
 
 function drawInteraction(faces, hands) {
+  
+  //hulkWidth = faceWidth * 1.5;
+    //hulkHeight = faceHeight * 1.5;
+    //hulkX = faceCenterX - hulkWidth / 2;
+    //hulkY = faceCenterY - hulkHeight / 2;
 
   // for loop to capture if there is more than one face on the screen. This applies the same process to all faces. 
   for (let i = 0; i < faces.length; i++) {
@@ -61,21 +70,43 @@ function drawInteraction(faces, hands) {
 
     let noseTipX = face.keypoints[4].x;
     let noseTipY = face.keypoints[4].y;
+    
     /*
     Start drawing on the face here
     */
+   
+
+   //noStroke()
+    //fill(10,140,40);
+     //ellipse(faceCenterX, faceCenterY, faceWidth, faceheight);
+
+    // drawPoints(face.leftEye);
     noStroke()
-    fill(225, 225, 0);
+    fill(0, 0, 0);
     // fill(get(leftEyeCenterX, leftEyeCenterY))
 
     ellipse(leftEyeCenterX, leftEyeCenterY, leftEyeWidth, leftEyeHeight);
+    ellipse(rightEyeCenterX, rightEyeCenterY, rightEyeWidth, rightEyeHeight);
 
-    drawPoints(face.leftEye);
+    //noStroke()
+    //fill(10,85,25);
+     //ellipse(leftEyebrowCenterX, leftEyebrowCenterY, leftEyebrowWidth, leftEyebrowHeight);
+     //ellipse(rightEyebrowCenterX, rightEyebrowCenterY, rightEyebrowWidth, rightEyebrowHeight);
+
+     noStroke()
+    fill(0, 0, 0);
+     ellipse(lipsCenterX, lipsCenterY, lipsWidth, lipsHeight);
+
+    
     drawPoints(face.leftEyebrow);
-    drawPoints(face.lips);
-    drawPoints(face.rightEye);
+    //drawPoints(face.lips);
+    // drawPoints(face.rightEye);
     drawPoints(face.rightEyebrow);
-
+    // drawPoints(face.leftEye);
+    imageMode (CENTER)
+   image(hulkImage, faceCenterX, faceCenterY, faceWidth, faceheight);
+   imageMode (CORNER)
+    
     // drawX(rightEyeCenterX,rightEyeCenterY);
     // drawX(leftEyeCenterX,leftEyeCenterY);
 
@@ -113,9 +144,11 @@ function drawPoints(feature) {
   for (let i = 0; i < feature.keypoints.length; i++) {
     let element = feature.keypoints[i];
     noStroke();
-    fill(0, 255, 0);
-    circle(element.x, element.y, 5);
+    fill(10,85,25);
+    rect(element.x, element.y, 8);
   }
   pop()
+
+ 
 
 }
