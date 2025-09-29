@@ -185,3 +185,17 @@ function drawPoints(feature) {
   pop()
 
 }
+
+let hulkX, hulkY;
+let hulkWidth, hulkHeight;
+//let hulkImage;
+//let hulkImage2
+/* load images here */
+function prepareInteraction() {
+  //bgImage = loadImage('/images/background.png');
+  hulkImage = loadImage('/images/HFacee.png');
+  hulkImage2 = loadImage('/images/HMooth.png');
+  
+  
+}
+

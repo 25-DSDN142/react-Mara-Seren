@@ -1,42 +1,22 @@
-// ----=  Faces  =----
-let hulkX, hulkY;
-let hulkWidth, hulkHeight;
-//let hulkImage;
-//let hulkImage2
+
+
 /* load images here */
 function prepareInteraction() {
-  //bgImage = loadImage('/images/background.png');
   hulkImage = loadImage('/images/HFacee.png');
   hulkImage2 = loadImage('/images/HMooth.png');
   
-  
 }
 
-function drawInteraction(faces, hands) {
-  
-  //hulkWidth = faceWidth * 1.5;
-    //hulkHeight = faceHeight * 1.5;
-    //hulkX = faceCenterX - hulkWidth / 2;
-    //hulkY = faceCenterY - hulkHeight / 2;
+let face;
 
-  // for loop to capture if there is more than one face on the screen. This applies the same process to all faces. 
-  for (let i = 0; i < faces.length; i++) {
+function drawInteraction(faces, hands) {
+
+   for (let i = 0; i < faces.length; i++) {
     let face = faces[i]; // face holds all the keypoints of the face\
     console.log(face);
     if (showKeypoints) {
       drawPoints(face)
     }
-
-    /*
-    Once this program has a face, it knows some things about it.
-    This includes how to draw a box around the face, and an oval. 
-    It also knows where the key points of the following parts are:
-     face.leftEye
-     face.leftEyebrow
-     face.lips
-     face.rightEye
-     face.rightEyebrow
-    */
     // Here are some variables you may like to use. 
     // Face basics
     let faceCenterX = face.faceOval.centerX;
@@ -76,68 +56,16 @@ function drawInteraction(faces, hands) {
     let noseTipY = face.keypoints[4].y;
     let mouthX = face.keypoints[19].x;
     let mouthY = face.keypoints[0].y;
-  
-    /*
-    Start drawing on the face here
-    */
+
    
-
-   //noStroke()
-    //fill(10,140,40);
-     //ellipse(faceCenterX, faceCenterY, faceWidth, faceheight);
-
-    // drawPoints(face.leftEye);
-    //noStroke()
-    //fill(0, 0, 0);
-    // fill(get(leftEyeCenterX, leftEyeCenterY))
-
-    //ellipse(leftEyeCenterX, leftEyeCenterY, leftEyeWidth, leftEyeHeight);
-    //ellipse(rightEyeCenterX, rightEyeCenterY, rightEyeWidth, rightEyeHeight);
-
-    //noStroke()
-    //fill(10,85,25);
-     //ellipse(leftEyebrowCenterX, leftEyebrowCenterY, leftEyebrowWidth, leftEyebrowHeight);
-     //ellipse(rightEyebrowCenterX, rightEyebrowCenterY, rightEyebrowWidth, rightEyebrowHeight);
-
-     //noStroke()
-    //fill(0, 0, 0);
-     //ellipse(lipsCenterX, lipsCenterY, lipsWidth, lipsHeight);
-
-    
-    //drawPoints(face.leftEyebrow);
-    //drawPoints(face.lips);
-    // drawPoints(face.rightEye);
-    //drawPoints(face.rightEyebrow);
-    // drawPoints(face.leftEye);
     imageMode (CENTER)
   
    image(hulkImage, faceCenterX, faceCenterY, faceWidth, faceheight);
-      //hulkImage.resize(2000,0);
-   //image(hulkImage, faceCenterX, faceCenterY, faceWidth, faceheight);
   
    image(hulkImage2, mouthX, mouthY, lipsWidth, lipsHeight);
    imageMode (CORNER)
-    
-    // drawX(rightEyeCenterX,rightEyeCenterY);
-    // drawX(leftEyeCenterX,leftEyeCenterY);
 
-
-    // drawX(noseTipX,noseTipY); 
-
-    // drawX(face.keypoints[332].x,face.keypoints[332].y);
-    // drawX(face.keypoints[103].x,face.keypoints[103].y);
-
-
-    /*
-    Stop drawing on the face here
-    */
-
-  }
-  //------------------------------------------------------
-  // You can make addtional elements here, but keep the face drawing inside the for loop. 
-}
-
-function drawX(X, Y) {
+   function drawX(X, Y) {
   push()
 
   strokeWeight(15)
@@ -162,4 +90,86 @@ function drawPoints(feature) {
 
  
 
+}
+    
+  }
+  // hands part
+  // for loop to capture if there is more than one hand on the screen. This applies the same process to all hands.
+  for (let i = 0; i < hands.length; i++) {
+    let hand = hands[i];
+    //console.log(hand);
+    if (showKeypoints) {
+      drawConnections(hand)
+    }
+
+  captainAmericaSHield(hand)
+
+  }
+  //------------------------------------------------------
+  // You can make addtional elements here, but keep the face drawing inside the for loop. 
+function captainAmericaSHield(hand) {
+  // Find the index finger tip and thumb tip
+  // let finger = hand.index_finger_tip;
+
+  let finger = hand.middle_finger_tip; // this finger now contains the x and y infomation! you can access it by using finger.x 
+  let thumb = hand.thumb_tip;
+
+  // Draw circles at finger positions
+  let centerX = (finger.x + thumb.x) / 2;
+  let centerY = (finger.y + thumb.y) / 2;
+  // Calculate the pinch "distance" between finger and thumb
+  let pinch = dist(finger.x, finger.y, thumb.x, thumb.y);
+
+  // This circle's size is controlled by a "pinch" gesture
+  fill(135,0,0);
+  stroke(0);
+  strokeWeight(0);
+  circle(centerX, centerY, 260);
+
+   fill(165,165,171);
+  stroke(0);
+  strokeWeight(0);
+  circle(centerX, centerY, 200);
+
+   fill(135,0,0);
+  stroke(0);
+  strokeWeight(0);
+  circle(centerX, centerY, 140);
+
+   fill(0,45,92);
+  stroke(0);
+  strokeWeight(0);
+  circle(centerX, centerY, 80);
+
+//star shape
+push();
+translate (centerX, centerY);
+//rotate (frameCount * 0.05);
+fill(165,165,171);
+Capstary(0, 0, 40, 16, 5);
+pop();
+
+
+
+  let indexFingerTipX = hand.index_finger_tip.x;
+  let indexFingerTipY = hand.index_finger_tip.y;
+  //fill(0)
+  //circle(indexFingerTipX, indexFingerTipY, 20);
+
+}
+//helper function to draw star
+function Capstary (x, y, radius1, radius2, npoints){
+  let angle = TWO_PI / npoints;
+  let halfAngle = angle / 2.0;
+  beginShape ();
+  for (let a = 0; a < TWO_PI; a += angle){
+    let sx = x + cos(a) * radius2;
+    let sy = y + sin(a) * radius2;
+    vertex(sx, sy);
+    sx = x + cos(a + halfAngle) * radius1;
+    sy = y + sin(a + halfAngle) * radius1;
+    vertex(sx, sy);
+  }
+  endShape (CLOSE);
+}
 }
