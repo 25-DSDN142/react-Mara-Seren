@@ -53,6 +53,7 @@ for (let i = 0; i < hands.length; i++) {
 
 
 
+
 //Hulk Face
    for (let i = 0; i < faces.length; i++) {
     let face = faces[i]; // face holds all the keypoints of the face\
@@ -237,6 +238,7 @@ function WondaHands(hand) {
 
 }
 
+//Points
 function drawPoints(feature) {
 
   push()
