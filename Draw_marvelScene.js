@@ -3,13 +3,18 @@
 /* load images here */
 function prepareInteraction() {
   hulkImage = loadImage('/images/HFacee.png');
-  hulkImage2 = loadImage('/images/HMooth.png');
+  hulkImage3 = loadImage('/images/HC.png');
+  bgImage = loadImage('/images/background.png');
   
 }
 
 let face;
+let captainAmericaSHield = true;
+let WondaHands = true;
 
 function drawInteraction(faces, hands) {
+
+image(bgImage, 0, 0, 1280, 960);
 
    for (let i = 0; i < faces.length; i++) {
     let face = faces[i]; // face holds all the keypoints of the face\
@@ -60,9 +65,9 @@ function drawInteraction(faces, hands) {
    
     imageMode (CENTER)
   
-   image(hulkImage, faceCenterX, faceCenterY, faceWidth, faceheight);
+   image(hulkImage3, faceCenterX, faceCenterY, 600, 600);
   
-   image(hulkImage2, mouthX, mouthY, lipsWidth, lipsHeight);
+   //image(hulkImage2, mouthX, mouthY, lipsWidth, lipsHeight);
    imageMode (CORNER)
 
    function drawX(X, Y) {
@@ -88,7 +93,6 @@ function drawPoints(feature) {
   }
   pop()
 
- 
 
 }
     
@@ -103,14 +107,21 @@ function drawPoints(feature) {
     }
 
   captainAmericaSHield(hand)
-
+  
   }
   //------------------------------------------------------
   // You can make addtional elements here, but keep the face drawing inside the for loop. 
 function captainAmericaSHield(hand) {
   // Find the index finger tip and thumb tip
   // let finger = hand.index_finger_tip;
-
+  let whatGesture = detectHandGesture(hand)
+    if (whatGesture == "Thumbs Up") {
+      captainAmericaSHield = true;
+    }
+    if (whatGesture == "Open Palm") {
+      captainAmericaSHield = false;
+    }
+ if (captainAmericaSHield){
   let finger = hand.middle_finger_tip; // this finger now contains the x and y infomation! you can access it by using finger.x 
   let thumb = hand.thumb_tip;
 
@@ -149,14 +160,6 @@ fill(165,165,171);
 Capstary(0, 0, 40, 16, 5);
 pop();
 
-
-
-  let indexFingerTipX = hand.index_finger_tip.x;
-  let indexFingerTipY = hand.index_finger_tip.y;
-  //fill(0)
-  //circle(indexFingerTipX, indexFingerTipY, 20);
-
-}
 //helper function to draw star
 function Capstary (x, y, radius1, radius2, npoints){
   let angle = TWO_PI / npoints;
@@ -171,5 +174,66 @@ function Capstary (x, y, radius1, radius2, npoints){
     vertex(sx, sy);
   }
   endShape (CLOSE);
+}
+
+  let indexFingerTipX = hand.index_finger_tip.x;
+  let indexFingerTipY = hand.index_finger_tip.y;
+  //fill(0)
+  //circle(indexFingerTipX, indexFingerTipY, 20);
+ }
+}
+
+for (let i = 0; i < hands.length; i++) {
+    let hand = hands[i];
+    //console.log(hand);
+    if (showKeypoints) {
+      drawConnections(hand)
+    }
+  WondaHands(hand)
+
+function WondaHands(hand) {
+  let whatGesture = detectHandGesture(hand)
+    if (whatGesture == "Thumbs Up") {
+      WondaHands = false;
+    }
+    if (whatGesture == "Open Palm") {
+      WondaHands = true;
+    }
+
+ if (WondaHands){
+  let finger = hand.middle_finger_tip; // this finger now contains the x and y infomation! you can access it by using finger.x 
+  let thumb = hand.thumb_tip;   
+
+   // Draw circles at finger positions
+  let centerX = (finger.x + thumb.x) / 2;
+  let centerY = (finger.y + thumb.y) / 2;
+  // Calculate the pinch "distance" between finger and thumb
+  let pinch = dist(finger.x, finger.y, thumb.x, thumb.y);
+
+// This circle's size is controlled by a "pinch" gesture
+  fill(64,0,0);
+  stroke(0);
+  strokeWeight(0);
+  circle(centerX, centerY, 260);
+
+   fill(128,0,0);
+  stroke(0);
+  strokeWeight(0);
+  circle(centerX, centerY, 200);
+
+   fill(191,0,0);
+  stroke(0);
+  strokeWeight(0);
+  circle(centerX, centerY, 140);
+
+   fill(255,0,0);
+  stroke(0);
+  strokeWeight(0);
+  circle(centerX, centerY, 80);
+
+}
+
+
+}
 }
 }
