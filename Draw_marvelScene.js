@@ -16,6 +16,44 @@ function drawInteraction(faces, hands) {
 
 image(bgImage, 0, 0, 1280, 960);
 
+// This function draw's a dot on all the keypoints. It can be passed a whole face, or part of one. 
+
+// Captain America Shield
+for (let i = 0; i < hands.length; i++) {
+    let hand = hands[i];
+    //console.log(hand);
+    if (showKeypoints) {
+      drawConnections(hand)
+    }
+
+  captainAmericaSHield(hand)
+  }
+  //Wonda Power
+for (let i = 0; i < hands.length; i++) {
+    let hand = hands[i];
+    //console.log(hand);
+    if (showKeypoints) {
+      drawConnections(hand)
+    }
+  WondaHands(hand)
+}
+// Hulk Face
+ for (let i = 0; i < faces.length; i++) {
+    let face = faces[i]; // face holds all the keypoints of the face\
+    console.log(face);
+    if (showKeypoints) {
+      drawPoints(face)
+    }
+    
+  }
+}
+
+
+
+
+
+
+//Hulk Face
    for (let i = 0; i < faces.length; i++) {
     let face = faces[i]; // face holds all the keypoints of the face\
     console.log(face);
@@ -79,38 +117,8 @@ image(bgImage, 0, 0, 1280, 960);
 
   pop()
 }
-
-
-// This function draw's a dot on all the keypoints. It can be passed a whole face, or part of one. 
-function drawPoints(feature) {
-
-  push()
-  for (let i = 0; i < feature.keypoints.length; i++) {
-    let element = feature.keypoints[i];
-    noStroke();
-    fill(10,85,25);
-    rect(element.x, element.y, 8);
-  }
-  pop()
-
-
 }
-    
-  }
-  // hands part
-  // for loop to capture if there is more than one hand on the screen. This applies the same process to all hands.
-  for (let i = 0; i < hands.length; i++) {
-    let hand = hands[i];
-    //console.log(hand);
-    if (showKeypoints) {
-      drawConnections(hand)
-    }
-
-  captainAmericaSHield(hand)
-  
-  }
-  //------------------------------------------------------
-  // You can make addtional elements here, but keep the face drawing inside the for loop. 
+//Cap Shield Function
 function captainAmericaSHield(hand) {
   // Find the index finger tip and thumb tip
   // let finger = hand.index_finger_tip;
@@ -160,7 +168,14 @@ fill(165,165,171);
 Capstary(0, 0, 40, 16, 5);
 pop();
 
-//helper function to draw star
+
+  let indexFingerTipX = hand.index_finger_tip.x;
+  let indexFingerTipY = hand.index_finger_tip.y;
+  //fill(0)
+  //circle(indexFingerTipX, indexFingerTipY, 20);
+ }
+}
+//Cap Shield Star Helper
 function Capstary (x, y, radius1, radius2, npoints){
   let angle = TWO_PI / npoints;
   let halfAngle = angle / 2.0;
@@ -176,21 +191,7 @@ function Capstary (x, y, radius1, radius2, npoints){
   endShape (CLOSE);
 }
 
-  let indexFingerTipX = hand.index_finger_tip.x;
-  let indexFingerTipY = hand.index_finger_tip.y;
-  //fill(0)
-  //circle(indexFingerTipX, indexFingerTipY, 20);
- }
-}
-
-for (let i = 0; i < hands.length; i++) {
-    let hand = hands[i];
-    //console.log(hand);
-    if (showKeypoints) {
-      drawConnections(hand)
-    }
-  WondaHands(hand)
-
+//wonda power Function
 function WondaHands(hand) {
   let whatGesture = detectHandGesture(hand)
     if (whatGesture == "Thumbs Up") {
@@ -235,5 +236,16 @@ function WondaHands(hand) {
 
 
 }
-}
+
+function drawPoints(feature) {
+
+  push()
+  for (let i = 0; i < feature.keypoints.length; i++) {
+    let element = feature.keypoints[i];
+    noStroke();
+    fill(10,85,25);
+    rect(element.x, element.y, 8);
+  }
+  pop()
+
 }
