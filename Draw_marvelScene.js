@@ -119,6 +119,7 @@ for (let i = 0; i < hands.length; i++) {
   pop()
 }
 }
+
 //Cap Shield Function
 function captainAmericaSHield(hand) {
   // Find the index finger tip and thumb tip
@@ -176,6 +177,7 @@ pop();
   //circle(indexFingerTipX, indexFingerTipY, 20);
  }
 }
+
 //Cap Shield Star Helper
 function Capstary (x, y, radius1, radius2, npoints){
   let angle = TWO_PI / npoints;
