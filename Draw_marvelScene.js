@@ -13,8 +13,7 @@ let face;
 function drawInteraction(faces, hands) {
 
   image(bgImage, 0, 0, 1280, 960);
-
-  // This function draw's a dot on all the keypoints. It can be passed a whole face, or part of one. 
+ 
 //Hulk Face
    for (let i = 0; i < faces.length; i++) {
     let face = faces[i]; // face holds all the keypoints of the face\
@@ -97,11 +96,11 @@ function drawInteraction(faces, hands) {
     }
 
     
-  
+  // use this space if want to add anymore hands
 
   }
 
-
+// delete wonda power when the code is done
   //   //Wonda Power
   // for (let i = 0; i < hands.length; i++) {
   //     let hand = hands[i];
@@ -122,7 +121,7 @@ function drawInteraction(faces, hands) {
 //   }
 // }
 
-
+// use this space if I want to add another element 
 
 }
 
@@ -255,7 +254,7 @@ function drawPoints(feature) {
 
 }
 
-
+// A draw X point Function 
    function drawX(X, Y) {
   push()
 
