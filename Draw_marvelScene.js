@@ -81,7 +81,7 @@ function drawInteraction(faces, hands) {
       drawConnections(hand)
     }
  let whatGesture = detectHandGesture(hand)
-    if (whatGesture == "Thumbs Up") {
+    if (whatGesture == "Peace") {
       
       SheildActive = true;
        captainAmericaSHield(hand)
@@ -134,13 +134,13 @@ function captainAmericaSHield(hand) {
 
  // if (SheildActive) {
     let finger = hand.middle_finger_tip; // this finger now contains the x and y infomation! you can access it by using finger.x 
-    let thumb = hand.thumb_tip;
+    let index = hand.index_finger_tip;
 
     // Draw circles at finger positions
-    let centerX = (finger.x + thumb.x) / 2;
-    let centerY = (finger.y + thumb.y) / 2;
+    let centerX = (finger.x + index.x) / 2;
+    let centerY = (finger.y + index.y) / 2;
     // Calculate the pinch "distance" between finger and thumb
-    let pinch = dist(finger.x, finger.y, thumb.x, thumb.y);
+    let pinch = dist(finger.x, finger.y, index.x, index.y);
 
     // This circle's size is controlled by a "pinch" gesture
     fill(135, 0, 0);
@@ -229,6 +229,8 @@ function WondaHands(hand) {
     translate(centerX, centerY,);
     //rotate (frameCount * 0.05);
     fill(214,32,78, 140 );
+    stroke(214,32,78);
+    strokeWeight(8);
     Wonstary(20, -80, 20, 140, 4);
     pop();
 

@@ -40,7 +40,9 @@ function setup() {
   // Initialize video capture and UI
   initializeVideo();
   setupUI();
-
+  fill(247,249,249);
+    stroke(0 ,0 ,0);
+    strokeWeight(0);
 }
 
 function draw() {
