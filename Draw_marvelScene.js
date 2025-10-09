@@ -208,8 +208,8 @@ function WondaHands(hand) {
  // if (wandaActive) {
     let finger = hand.middle_finger_tip; // this finger now contains the x and y infomation! you can access it by using finger.x 
     let thumb = hand.thumb_tip;
-    let indexFingerTipX = hand.index_finger_tip.x;
-    let indexFingerTipY = hand.index_finger_tip.y;
+    let middleFingerTipX = hand.middle_finger_tip.x;
+    let middleFingerTipY = hand.middle_finger_tip.y;
     let ringFingerTipX = hand.ring_finger_tip.x;
     let ringFingerTipY = hand.ring_finger_tip.y;
     let thumbTipX = hand.thumb_tip.x;
@@ -228,32 +228,36 @@ function WondaHands(hand) {
     push();
     translate(centerX, centerY,);
     //rotate (frameCount * 0.05);
-    fill(214,32,78, 140 );
+    fill(214,32,78, 100);
     stroke(214,32,78);
     strokeWeight(8);
-    Wonstary(20, -80, 20, 140, 4);
+    Wonstary(-40, -80, 20, 140, 4);
     pop();
 
-    fill(214,32,78, 140);
+    fill(214,32,78, 100);
     stroke(214,32,78);
     strokeWeight(8);
     circle(centerX, centerY, 260);
 
-    fill(214,32,78, 140);
+    fill(214,32,78, 100);
     stroke(214,32,78);
     strokeWeight(8);
     circle(thumbTipX, thumbTipY, 200);
 
-    // fill(191, 0, 0, 200);
-    // stroke(191, 0, 0);
-    // strokeWeight(4);
-    // circle(indexFingerTipX, indexFingerTipY, 140,);
+    fill(214,32,78, 100);
+    stroke(214,32,78);
+    strokeWeight(8);
+    circle(middleFingerTipX, middleFingerTipY, 120,);
 
-    fill(214,32,78, 140);
+    fill(214,32,78, 100);
     stroke(214,32,78);
     strokeWeight(8);
     circle(ringFingerTipX, ringFingerTipY, 80);
 
+    fill(214,32,78, 100);
+    stroke(214,32,78);
+    strokeWeight(8);
+    circle(pinkyFingerTipX, pinkyFingerTipY, 40);
   
  //}
 
