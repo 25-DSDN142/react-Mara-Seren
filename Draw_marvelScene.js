@@ -3,6 +3,7 @@ let bgImage, hulkImage, hulkImage3;
 function prepareInteraction() {
   hulkImage = loadImage('/images/HFacee.png');
   hulkImage3 = loadImage('/images/HC.png');
+  hulkbody = loadImage('/images/HFull.png')
   bgImage = loadImage('/images/background.png');
 
 }
@@ -65,7 +66,7 @@ function drawInteraction(faces, hands) {
 
     imageMode (CENTER)
 
-   image(hulkImage3, faceCenterX, faceCenterY, 600, 600);
+   image(hulkbody, faceCenterX, faceCenterY, 900, 900);
 
    //image(hulkImage2, mouthX, mouthY, lipsWidth, lipsHeight);
    imageMode (CORNER)
