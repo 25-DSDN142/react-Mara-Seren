@@ -5,6 +5,7 @@ function prepareInteraction() {
   hulkImage3 = loadImage('/images/HC.png');
   hulkbody = loadImage('/images/HFull.png')
   bgImage = loadImage('/images/background.png');
+  BG = loadImage('/images/BGFinal.png');
 
 }
 
@@ -13,7 +14,7 @@ let face;
 
 function drawInteraction(faces, hands) {
 
-  image(bgImage, 0, 0, 1280, 960);
+  image(BG, 0, 0, 1280, 960);
 
   // This function draw's a dot on all the keypoints. It can be passed a whole face, or part of one. 
 //Hulk Face
@@ -22,8 +23,6 @@ function drawInteraction(faces, hands) {
     //console.log(face);
     if (showKeypoints) {
       drawPoints(face)
-      
-      noStroke();
     }
     // Here are some variables you may like to use. 
     // Face basics
