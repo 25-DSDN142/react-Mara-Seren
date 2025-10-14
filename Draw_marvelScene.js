@@ -22,6 +22,8 @@ function drawInteraction(faces, hands) {
     //console.log(face);
     if (showKeypoints) {
       drawPoints(face)
+      
+      noStroke();
     }
     // Here are some variables you may like to use. 
     // Face basics
@@ -260,6 +262,7 @@ function WondaHands(hand) {
     strokeWeight(8);
     circle(pinkyFingerTipX, pinkyFingerTipY, 40);
   
+    noStroke();
  //}
 
 
@@ -292,16 +295,17 @@ function drawPoints(feature) {
     rect(element.x, element.y, 8);
   }
   pop()
-
+ 
 }
 
-
+//Draw Points Function 
    function drawX(X, Y) {
   push()
 
-  strokeWeight(15)
+  strokeWeight(0)
   line(X - 20, Y - 20, X + 20, Y + 20)
   line(X - 20, Y + 20, X + 20, Y - 20)
 
   pop()
+  
 }

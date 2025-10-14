@@ -382,6 +382,7 @@ function navigateToPage(page) {
 }
 
 // Button drawing function 
+noStroke();
 function drawButton(label, x, y, w, h, isActive, onClick) {
   push();
   
